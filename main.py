@@ -103,6 +103,10 @@ reviewer_py.rate_hw(best_student, 'Python', 10)
 reviewer_py.rate_hw(worse_student, 'Python', 8)
 reviewer_java.rate_hw(best_student, 'Java', 10)
 reviewer_java.rate_hw(worse_student, 'Java', 7)
+reviewer_py.rate_hw(best_student, 'Python', 9)
+reviewer_py.rate_hw(worse_student, 'Python', 10)
+reviewer_java.rate_hw(best_student, 'Java', 9)
+reviewer_java.rate_hw(worse_student, 'Java', 9)
 
 
 
@@ -120,5 +124,32 @@ print("_____________________")
 print(reviewer_py)
 print("_____________________")
 print(reviewer_java)
+print("_____________________")
+
+
+studens = [best_student, worse_student]
+lecturers = [best_lecturer, worse_lecturer]
+
+def mid_grade_students(students,course_search):
+    sum_grade = []
+    for student in students:
+        for course,grade in student.grades.items():
+            if course_search in course:
+                sum_grade += grade
+    print(f"Средняя оценка у студентов за курс {course_search}: {sum(sum_grade) / len(sum_grade)}")
+
+def mid_grade_lecturers(lecturers,course_search):
+    sum_grade = []
+    for lecturer in lecturers:
+        for course,grade in lecturer.grades.items():
+            if course_search in course:
+                sum_grade += grade
+    print(f"Средняя оценка у лекторов за курс {course_search}: {sum(sum_grade) / len(sum_grade)}")
+
+mid_grade_students(studens,"Java")
+mid_grade_students(studens,"Python")
+print("_____________________")
+mid_grade_lecturers(lecturers,"Java")
+mid_grade_lecturers(lecturers,"Python")
 
 
