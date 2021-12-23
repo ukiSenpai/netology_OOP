@@ -17,6 +17,37 @@ class Student:
         else:
             return 'Ошибка'
 
+
+
+    def __eq__(self, other):
+        one_grade = [sum_grade for one_cycle in self.grades.values() for sum_grade in one_cycle]
+        second_grade = [sum_grade for one_cycle in other.grades.values() for sum_grade in one_cycle]
+        if (sum(one_grade) / len(one_grade)) == (sum(second_grade) / len(second_grade)):
+            return f"Оценки у {self.name} и {other.name} равны"
+        else:
+            return f"Оценки у {self.name} и {other.name} не равны "
+
+    def __lt__(self, other):
+        one_grade = [sum_grade for one_cycle in self.grades.values() for sum_grade in one_cycle]
+        second_grade = [sum_grade for one_cycle in other.grades.values() for sum_grade in one_cycle]
+        if (sum(one_grade) / len(one_grade)) < (sum(second_grade) / len(second_grade)):
+            return f"Оценки у {self.name} со средним баллом  {sum(one_grade) / len(one_grade)}" \
+                   f" ниже чем у {other.name} со средним балом {sum(second_grade) / len(second_grade)}"
+        else:
+            return f"Оценки у {self.name} со средним баллом  {sum(one_grade) / len(one_grade)} " \
+                   f"выше чем у {other.name} со средним балом {sum(second_grade) / len(second_grade)}"
+
+
+    def __gt__(self, other):
+        one_grade = [sum_grade for one_cycle in self.grades.values() for sum_grade in one_cycle]
+        second_grade = [sum_grade for one_cycle in other.grades.values() for sum_grade in one_cycle]
+        if (sum(one_grade) / len(one_grade)) > (sum(second_grade) / len(second_grade)):
+            return f"Оценки у {self.name} со средним баллом  {sum(one_grade) / len(one_grade)} " \
+                   f"выше чем у {other.name} со средним балом {sum(second_grade) / len(second_grade)}"
+        else:
+            return f"Оценки у {self.name} со средним баллом  {sum(one_grade) / len(one_grade)} " \
+                   f"ниже чем у {other.name} со средним балом {sum(second_grade) / len(second_grade)}"
+
     def __str__(self):
         sum_grades = []
         for grade in self.grades.values():
@@ -53,6 +84,34 @@ class Lecturer(Mentor):
         res = f'Имя: {self.name} \nФамилия: {self.surname} ' \
             f'\nСредняя оценка за лекции: {round(mid_grade, 1)}'
         return res
+
+    def __eq__(self, other):
+        one_grade = [sum_grade for one_cycle in self.grades.values() for sum_grade in one_cycle]
+        second_grade = [sum_grade for one_cycle in other.grades.values() for sum_grade in one_cycle]
+        if (sum(one_grade) / len(one_grade)) == (sum(second_grade) / len(second_grade)):
+            return f"Оценки у {self.name} и {other.name} равны"
+        else:
+            return f"Оценки у {self.name} и {other.name} не равны "
+
+    def __lt__(self, other):
+        one_grade = [sum_grade for one_cycle in self.grades.values() for sum_grade in one_cycle]
+        second_grade = [sum_grade for one_cycle in other.grades.values() for sum_grade in one_cycle]
+        if (sum(one_grade) / len(one_grade)) < (sum(second_grade) / len(second_grade)):
+            return f"Оценки у {self.name} со средним баллом  {sum(one_grade) / len(one_grade)}" \
+                   f" ниже чем у {other.name} со средним балом {sum(second_grade) / len(second_grade)}"
+        else:
+            return f"Оценки у {self.name} со средним баллом  {sum(one_grade) / len(one_grade)} " \
+                   f"выше чем у {other.name} со средним балом {sum(second_grade) / len(second_grade)}"
+
+    def __gt__(self, other):
+        one_grade = [sum_grade for one_cycle in self.grades.values() for sum_grade in one_cycle]
+        second_grade = [sum_grade for one_cycle in other.grades.values() for sum_grade in one_cycle]
+        if (sum(one_grade) / len(one_grade)) > (sum(second_grade) / len(second_grade)):
+            return f"Оценки у {self.name} со средним баллом  {sum(one_grade) / len(one_grade)} " \
+                   f"выше чем у {other.name} со средним балом {sum(second_grade) / len(second_grade)}"
+        else:
+            return f"Оценки у {self.name} со средним баллом  {sum(one_grade) / len(one_grade)} " \
+                   f"ниже чем у {other.name} со средним балом {sum(second_grade) / len(second_grade)}"
 
 
 class Reviewer(Mentor):
@@ -151,5 +210,19 @@ mid_grade_students(studens,"Python")
 print("_____________________")
 mid_grade_lecturers(lecturers,"Java")
 mid_grade_lecturers(lecturers,"Python")
+print("_____________________")
+print(best_student == worse_student)
+print(best_student < worse_student)
+print(best_student > worse_student)
+print(worse_student < best_student)
+print(worse_student > best_student)
+print("_____________________")
+print(best_lecturer == worse_lecturer)
+print(best_lecturer < worse_lecturer)
+print(best_lecturer > worse_lecturer)
+print(worse_lecturer < best_lecturer)
+print(worse_lecturer > best_lecturer)
+
+
 
 
